@@ -531,5 +531,157 @@ print('\n')
 for num, Paises in enumerate(Lista_paises):
   print(num, Paises)
 
+#Usando o for dentro de uma lista
+#'Numero' antes do for - o que entra na lista (pode ser 'Numero**2, 'Numero+2 e etc')
+#'Numero' depois do for - variável de iteração
+Lista_02 = [Numero for Numero in range(0, 10)]
+print(Lista_02)
+
+#Mesma forma mas menos resumida
+Lista_02 = []
+for Numero in range(0, 10):
+  Lista_02.append(Numero)
+print(Lista_02)
+
 """###Estrutura de repetição WHILE"""
 
+Parar = 0
+
+while Parar <= 10: #Condição de parada ser menos ou igual a 10
+  print(Parar)
+  Parar += 1
+
+print('\n')
+
+import random
+
+while True:
+  Jogador_01 = random.randint(0,10)
+  Jogador_02 = random.randint(0, 10)
+
+  if Jogador_01 > Jogador_02:
+    print(f'Jogador 01: {Jogador_01} e Jogador 02: {Jogador_02}. Jogador 01 venceu! Jogo encerrado')
+    break #Quebra o loop quando o jogador_01 vencer
+  elif Jogador_01 == Jogador_02:
+    print(f'Jogador 01: {Jogador_01} e Jogador 02: {Jogador_02}. Empate!')
+  else:
+    print(f'Jogador 01: {Jogador_01} e Jogador 02: {Jogador_02}. Jogador 02 venceu!')
+
+"""###Estrutura de BREAK e CONTINUE"""
+
+Lista_Paises = ['Brasil', 'Argentina', 'Uruguai', 'Chile', 'Paraguai', 'Bolivia',
+                'Equador', 'Colombia', 'Suriname, Guiane, Goianai France']
+for Paises in Lista_paises:
+  print(Paises)
+  if Paises == 'Chile':
+    break #Quebra o loop
+
+print('\n')
+
+for Paises in Lista_paises:
+  if Paises == 'Chile':
+    continue #Pula o loop
+  print(Paises)
+
+"""###Estrutura de Funções (DEF)"""
+
+#É um bloco de código que só é executado quando é chamado
+
+def Boas_vindas():
+  print('*** Boas Vindas ao Python ***')
+
+def Somar(Num_01, Num_02):
+  return Num_01 + Num_02
+
+Boas_vindas()
+print(Somar(2, 3))
+
+"""###Estrutura LAMBDA"""
+
+# A função lambda é uma pequena função anônima
+#Ela pode receber qualquer número de argumentos, mas pode ter apenas uma expressão
+
+#Nome da função = lambda parâmetros : retorno
+Funcao_lambda_01 = lambda Valor_01, Valor_02 : Valor_01 + Valor_02
+
+print(Funcao_lambda_01(10, 20))
+
+#Nome da função = lambda parâmetro : condição de retorno se '...', caso contrário '...'
+Funcao_lambda_02 = lambda Valor : 'Verdadeiro' if Valor % 2 == 0 else 'Falso'
+
+print(Funcao_lambda_02(3))
+
+#Lambda não permite elif, alternativa:
+Funcao_lambda_03 = lambda Idade : ('Maior de 18 anos' if Idade > 18 else
+                                   'Igual a 18 anos' if Idade == 18 else
+                                   'Menor de 18 anos')
+print(Funcao_lambda_03(18))
+
+"""###Estrutura TRY"""
+
+'''
+O try permite testar um bloco de código quanto a erros
+O except permite que você lide com o erro
+O else permite executar código quando não há erro
+O finally permite que você execute código, independentemente do resultado dos blocos try e except
+'''
+
+try:
+  print('Deu certo')
+except:
+  print('Deu erro')
+finally:
+  print('É executado de qualquer forma')
+
+print('\n')
+
+#Exemplo com o else
+try:
+  Numero = float('abc')
+except:
+  print('Erro: você digitou um número inteiro')
+else:
+  print('Você digitou o número corretamente')
+
+"""###Estrutura de CLASSES/OBJETOS"""
+
+#Criando a classe
+class Pessoa:
+  #Método construtor, ele sempre vai ter o nome de __init__
+  def __init__(self, Nome, Idade): #'self' - referência do objeto usado
+    self.Nome = Nome
+    self.Idade = Idade
+
+  def Boas_Vindas(self):
+    print('Seja bem vinda(o)', self.Nome)
+
+  def Recusado(self):
+    print('Seu acesso foi recusado!')
+
+  def Maior_Idade(self):
+    if self.Idade >= 18:
+      self.Boas_Vindas() #Precisa usar o 'self' para indicar qual função está se referindo, ou seja, a dessa classe
+    else:
+      self.Recusado()
+
+Dados = Pessoa('Alana', 25)
+Dados.Maior_Idade()
+
+"""###Módulos/Pacotes"""
+
+#Algumas bibliotecas são nativas do Python ent o 'import' é o suficiente para importar e usar elas
+#Para algumas bibliotecas precisa fazer a instalação do pacote no Python e para isso se faz:
+#pip install NomeDaBiblioteca
+
+#!pip install pandas - collab precisa usar o !
+
+"""###Print Formatado"""
+
+#print normal
+print('Soma de 2 + 2:', 2 + 2)
+
+#print formatado primeira opção
+print(f'Soma de 2 + 2: {2 + 2}')
+
+#print formatado segunda opção
+print('Soma de 2 + 2: {}' .format(2 + 2))
