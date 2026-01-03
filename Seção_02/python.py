@@ -253,7 +253,7 @@ print(Split[1])
 """###Comando Input"""
 
 #Usado para receber entrada do usuário
-Nome_02 = input(str('Qual o seu nome? '))
+Nome_02 = str(input('Qual o seu nome? '))
 print(Nome_02)
 
 """###Operadores de comparação"""
